@@ -10,6 +10,14 @@
            name="userBean"
            type="com.example.mvvmtestproject.UserBean" />
 
+
+          <variable
+           name="userBean2"
+           type="com.example.mvvmtestproject.UserBean2" />
+
+
+
+
        <variable
            name="click"
            type="com.example.mvvmtestproject.MyClick" />
@@ -87,6 +95,22 @@
      android:layout_height="80dp"
      app:avator="@{userBean.avator}"
      />
+ <TextView
+     app:layout_constraintLeft_toLeftOf="parent"
+     android:id="@+id/tv_name2"
+     app:layout_constraintTop_toTopOf="parent"
+     android:layout_marginTop="300dp"
+android:textColor="@color/colorPrimary"
+     android:layout_width="80dp"
+     android:layout_height="80dp"
+     android:text="@={userBean2.name}"
+     />
+
+
+
+
+
+
 
 
 
