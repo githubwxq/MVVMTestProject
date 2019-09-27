@@ -3,6 +3,15 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
+
+
+    dataBinding{
+        enabled = true
+    }
+
+
+
     defaultConfig {
         applicationId "com.example.mvvmtestproject"
         minSdkVersion 15
@@ -19,10 +28,6 @@ android {
     }
 
 
-//    dataBinding{
-//        enabled = true
-//    }
-
 
 }
 
@@ -33,9 +38,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
-
-
-
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
 }
