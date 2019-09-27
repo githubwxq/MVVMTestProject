@@ -2,6 +2,7 @@ package com.example.mvvmtestproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.mvvmtestproject.databinding.ActivityMainBinding;
+import com.example.mvvmtestproject.databinding.ListItemBinding;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import io.reactivex.functions.Consumer;
@@ -17,6 +19,9 @@ import io.reactivex.functions.Consumer;
 public class DataBindingActivity extends AppCompatActivity {
 //    UserBean userBean=new UserBean();
     ActivityMainBinding activityMainBinding;
+    ListItemBinding itemBind;
+
+
     TestViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,25 @@ public class DataBindingActivity extends AppCompatActivity {
 //                userBean.setAvator("http://img5.imgtn.bdimg.com/it/u=400225805,527616426&fm=26&gp=0.jpg");
             }
         });
+
+
+        itemBind = DataBindingUtil.inflate(this.getLayoutInflater(), R.layout.list_item, null, false);
+        final ItemBean itemBean=new ItemBean();
+        itemBean.setName("fragment name");
+        itemBean.setAge("fragment age ===25");
+        itemBean.setAvator("fragment name");
+        itemBind.setVariable(BR.itemBean,itemBean);
+
+        itemBind.tvNameItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemBean.setName("啊啊啊啊点我干嘛");
+            }
+        });
+
+
+        activityMainBinding.flContainer.addView(itemBind.getRoot());
+
 
     }
 }
