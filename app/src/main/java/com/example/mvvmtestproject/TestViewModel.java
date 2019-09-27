@@ -47,6 +47,7 @@ public class TestViewModel extends ViewModel {
                 UIHandler.getInstance().post(new Runnable() {
                     @Override
                     public void run() {
+
                         userBeanMutableLiveData.getValue().setName(newValue + "看我的名字在变化");
                         userBean2MutableLiveData.getValue().setName(newValue + "看userbean我的名字在变化");
                     }
