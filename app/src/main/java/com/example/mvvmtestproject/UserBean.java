@@ -49,7 +49,7 @@ public class UserBean  extends BaseObservable {
 
     public void setName(String name) {
       this.name=name;
-      notifyPropertyChanged(BR.name);
+      notifyPropertyChanged(BR.name);     //必须加了以后才会变
     }
 
     @Bindable

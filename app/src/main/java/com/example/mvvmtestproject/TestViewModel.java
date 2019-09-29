@@ -15,6 +15,8 @@ public class TestViewModel extends ViewModel {
 
     private static final int ONE_SECOND = 3000;
 
+
+
     private MutableLiveData<Long> mElapsedTime = new MutableLiveData<>();
 
     private MutableLiveData<UserBean> userBeanMutableLiveData = new MutableLiveData<>();
@@ -48,12 +50,28 @@ public class TestViewModel extends ViewModel {
                     @Override
                     public void run() {
 
-                        userBeanMutableLiveData.getValue().setName(newValue + "看我的名字在变化");
-                        userBean2MutableLiveData.getValue().setName(newValue + "看userbean我的名字在变化");
+
+                        //设置属性了然后变化了
+                        userBeanMutableLiveData.getValue().setName(newValue + "看我的名字在变化"+newValue);
+
+                        userBeanMutableLiveData.postValue(   userBeanMutableLiveData.getValue());
+
+
+
+                        userBean2MutableLiveData.getValue().setName(newValue + "看userbean我的名字在变化"+newValue);
+
+
+
+
+
+
                     }
                 });
             }
         }, ONE_SECOND, ONE_SECOND);
+
+
+
     }
 
     public LiveData<Long> getElapsedTime() {

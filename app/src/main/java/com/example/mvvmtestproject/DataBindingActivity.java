@@ -3,6 +3,7 @@ package com.example.mvvmtestproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
@@ -46,7 +47,7 @@ public class DataBindingActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(TestViewModel.class);
 
-        viewModel.getuserbean().getValue();
+
 
         RxPermissions rxPermissions=new RxPermissions(this);
 
@@ -72,7 +73,7 @@ public class DataBindingActivity extends AppCompatActivity {
             }
         });
 
-
+        //测试 DataBindingUtil.inflate
         itemBind = DataBindingUtil.inflate(this.getLayoutInflater(), R.layout.list_item, null, false);
         final ItemBean itemBean=new ItemBean();
         itemBean.setName("fragment name");
@@ -83,21 +84,48 @@ public class DataBindingActivity extends AppCompatActivity {
         itemBind.tvNameItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 双向绑定 测试
                 itemBean.setName("啊啊啊啊点我干嘛");
-                activityMainBinding.etView.setText("18岁"); // 双向绑定
-
-
+                activityMainBinding.etView.setText("18岁");
                 Toast.makeText(DataBindingActivity.this,viewModel.getuserbean().getValue().getAge(),Toast.LENGTH_SHORT).show();
-
                 Log.e("wxq",viewModel.getuserbean().getValue().getAge());
+            }
+        });
+
+        activityMainBinding.flContainer.addView(itemBind.getRoot());
 
 
 
+
+
+
+
+
+
+        //测试多个观察者
+        viewModel.getElapsedTime().observe(this, new Observer<Long>() {
+            @Override
+            public void onChanged(Long aLong) {
+                Log.e("wxq","观察者一号"+aLong);
+            }
+        });
+
+        viewModel.getElapsedTime().observe(this, new Observer<Long>() {
+            @Override
+            public void onChanged(Long aLong) {
+                Log.e("wxq","观察者二号"+aLong);
             }
         });
 
 
-        activityMainBinding.flContainer.addView(itemBind.getRoot());
+        viewModel.getuserbean().observe(this, new Observer<UserBean>() {
+            @Override
+            public void onChanged(UserBean userBean) {
+                Log.e("wxq","观察者对象属性变化"+userBean.getName());
+                activityMainBinding.setUserBean( userBean);
+            }
+        });
+
 
 
     }
