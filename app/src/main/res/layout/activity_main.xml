@@ -76,6 +76,7 @@
 
 
       <EditText
+          android:id="@+id/et_view"
           android:layout_marginTop="220dp"
           android:text="@={userBean.age}"
           android:background="@null"

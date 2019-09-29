@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -83,6 +84,15 @@ public class DataBindingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 itemBean.setName("啊啊啊啊点我干嘛");
+                activityMainBinding.etView.setText("18岁"); // 双向绑定
+
+
+                Toast.makeText(DataBindingActivity.this,viewModel.getuserbean().getValue().getAge(),Toast.LENGTH_SHORT).show();
+
+                Log.e("wxq",viewModel.getuserbean().getValue().getAge());
+
+
+
             }
         });
 
