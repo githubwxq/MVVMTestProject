@@ -17,8 +17,25 @@ public class UserBean  extends BaseObservable {
 
     public String age ;
 
+
+    public void setItemBean(ItemBean itemBean) {
+        this.itemBean = itemBean;
+    }
+
+
+    @Bindable
+    public ItemBean getItemBean() {
+        return itemBean;
+    }
+
+    public ItemBean itemBean ;
+
+
+
+
     @Bindable
     public String getAvator() {
+//        return "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg";
         return avator;
     }
 
@@ -63,11 +80,6 @@ public class UserBean  extends BaseObservable {
     }
 
 
-
-   @BindingAdapter({"avator"})
-    public static  void abc(ImageView view,String url){
-       Glide.with(view.getContext()).load(url).into(view);
-    }
 
 
 

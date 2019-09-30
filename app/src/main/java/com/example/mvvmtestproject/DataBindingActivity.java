@@ -69,16 +69,19 @@ public class DataBindingActivity extends AppCompatActivity {
         activityMainBinding.tvHeard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                userBean.setAvator("http://img5.imgtn.bdimg.com/it/u=400225805,527616426&fm=26&gp=0.jpg");
+                viewModel.getuserbean().getValue().setAvator("http://img5.imgtn.bdimg.com/it/u=400225805,527616426&fm=26&gp=0.jpg");
             }
         });
 
         //测试 DataBindingUtil.inflate
         itemBind = DataBindingUtil.inflate(this.getLayoutInflater(), R.layout.list_item, null, false);
+
         final ItemBean itemBean=new ItemBean();
         itemBean.setName("fragment name");
         itemBean.setAge("fragment age ===25");
         itemBean.setAvator("fragment name");
+
+
         itemBind.setVariable(BR.itemBean,itemBean);
 
         itemBind.tvNameItem.setOnClickListener(new View.OnClickListener() {
@@ -89,15 +92,11 @@ public class DataBindingActivity extends AppCompatActivity {
                 activityMainBinding.etView.setText("18岁");
                 Toast.makeText(DataBindingActivity.this,viewModel.getuserbean().getValue().getAge(),Toast.LENGTH_SHORT).show();
                 Log.e("wxq",viewModel.getuserbean().getValue().getAge());
+                viewModel.getuserbean().getValue().getItemBean().setAge("点我干嘛呀好坏哦");
             }
         });
 
         activityMainBinding.flContainer.addView(itemBind.getRoot());
-
-
-
-
-
 
 
 
@@ -122,11 +121,9 @@ public class DataBindingActivity extends AppCompatActivity {
             @Override
             public void onChanged(UserBean userBean) {
                 Log.e("wxq","观察者对象属性变化"+userBean.getName());
-                activityMainBinding.setUserBean( userBean);
+                activityMainBinding.setUserBean( userBean); // 所有绑定设置都会变 全部属性刷新
+                itemBind.setVariable(BR.itemBean,userBean.getItemBean());
             }
         });
-
-
-
     }
 }

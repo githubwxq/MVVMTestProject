@@ -24,6 +24,9 @@ public class TestViewModel extends ViewModel {
     private MutableLiveData<UserBean2> userBean2MutableLiveData = new MutableLiveData<>();
 
 
+
+
+
     private long mInitialTime;
 
     public TestViewModel() {
@@ -50,11 +53,20 @@ public class TestViewModel extends ViewModel {
                     @Override
                     public void run() {
 
-
+                        ItemBean itemBean=new ItemBean();
+                        itemBean.setName(" ===name change"+newValue);
+                        itemBean.setAge("===change"+newValue);
+                        itemBean.setAvator("===change"+newValue);
                         //设置属性了然后变化了
                         userBeanMutableLiveData.getValue().setName(newValue + "看我的名字在变化"+newValue);
+                        userBeanMutableLiveData.getValue().setItemBean(itemBean);
 
-                        userBeanMutableLiveData.postValue(   userBeanMutableLiveData.getValue());
+                        userBeanMutableLiveData.postValue( userBeanMutableLiveData.getValue());
+
+
+
+
+
 
 
 

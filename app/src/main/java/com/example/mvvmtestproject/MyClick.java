@@ -4,7 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-public class MyClick {
+public class MyClick implements UserClickListener{
 
     private String tag="myclick";
 
@@ -14,5 +14,8 @@ public class MyClick {
     }
 
 
+    @Override
+    public void userClicked(View view) {
 
+    }
 }
