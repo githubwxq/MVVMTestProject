@@ -98,14 +98,14 @@
      android:background="@color/colorPrimary"
      android:layout_width="80dp"
      android:layout_height="80dp"
-     app:avator="@{userBean.avator}"
+
      />
  <TextView
      app:layout_constraintLeft_toLeftOf="parent"
      android:id="@+id/tv_name2"
      app:layout_constraintTop_toTopOf="parent"
      android:layout_marginTop="300dp"
-android:textColor="@color/colorPrimary"
+     android:textColor="@color/colorPrimary"
      android:layout_width="80dp"
      android:layout_height="80dp"
      android:text="@={userBean2.name}"

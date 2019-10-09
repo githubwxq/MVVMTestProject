@@ -17,6 +17,29 @@ public class UserBean  extends BaseObservable {
 
     public String age ;
 
+    public String getPlaceImage() {
+        return "http://cdn.duitang.com/uploads/item/201501/08/20150108164231_t432j.thumb.700_0.png";
+    }
+
+    public void setPlaceImage(String placeImage) {
+        this.placeImage = placeImage;
+    }
+
+    public String getErrorImage() {
+        return "http://cdn.duitang.com/uploads/item/201501/08/20150108164231_t432j.thumb.700_0.png";
+    }
+
+    public void setErrorImage(String errorImage) {
+        this.errorImage = errorImage;
+    }
+
+    public String placeImage ;
+    public String errorImage ;
+
+
+
+
+
 
     public void setItemBean(ItemBean itemBean) {
         this.itemBean = itemBean;
